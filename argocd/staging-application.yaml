@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ai-platform-staging
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/zmanjith/ai-platform-gitops.git
+    targetRevision: feature1
+    path: charts/ai-platform
+    helm:
+      valueFiles:
+        - ../../environments/staging.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ai-platform-staging
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
