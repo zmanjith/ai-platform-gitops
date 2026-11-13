@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: 491377098012.dkr.ecr.ap-southeast-2.amazonaws.com/ai-platform-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+ingress:
+  enabled: true
+  className: alb
+  scheme: internet-facing
+  targetType: ip
+  listenPorts: '[{"HTTP":80}]'
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
