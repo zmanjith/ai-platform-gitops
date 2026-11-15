@@ -3,16 +3,23 @@ kind: Application
 metadata:
   name: ai-platform-staging
   namespace: argocd
+
 spec:
   project: default
 
-  source:
-    repoURL: https://github.com/zmanjith/ai-platform-gitops.git
-    targetRevision: feature1
-    path: charts/ai-platform
-    helm:
-      valueFiles:
-        - ../../environments/staging.yaml
+  sources:
+    # Helm chart
+    - repoURL: https://github.com/zmanjith/ai-platform-gitops.git
+      targetRevision: feature1
+      path: charts/ai-platform
+      helm:
+        valueFiles:
+          - $values/environments/staging.yaml
+
+    # External values file
+    - repoURL: https://github.com/zmanjith/ai-platform-gitops.git
+      targetRevision: feature1
+      ref: values
 
   destination:
     server: https://kubernetes.default.svc
