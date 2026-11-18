@@ -1,0 +1,17 @@
+replicaCount: 2
+
+image:
+  repository: 491377098012.dkr.ecr.ap-southeast-2.amazonaws.com/ai-platform-app
+  tag: "483f8b1"
+  pullPolicy: IfNotPresent
+
+ingress:
+  enabled: true
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 1000m
+    memory: 1Gi
