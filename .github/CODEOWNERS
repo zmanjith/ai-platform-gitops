@@ -1,2 +1,2 @@
-/environments/production.yaml @zmoaching
-/argocd/production-application.yaml @zmoaching
+/environments/production.yaml @zmoach
+/argocd/production-application.yaml @zmoach
