@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: 491377098012.dkr.ecr.ap-southeast-2.amazonaws.com/ai-platform-app
-  tag: "483f8b1"
+  tag: "ec9cd7ee0eb3e7e1c1263d5b35f8c4dee58a84e5"
   pullPolicy: IfNotPresent
 
 ingress:
